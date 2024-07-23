@@ -1,0 +1,6 @@
+---
+- name: 1. Test the includes
+  import_playbook: include.yml
+
+- name: 2. Test the imports
+  import_playbook: import.yml
