@@ -1,0 +1,13 @@
+- name: DEBUG MESSAGE
+  ansible.builtin.debug:
+    msg: this is debug {{ count }}
+
+- name: IMPORT CHECK
+  ansible.builtin.debug:
+    msg: I have been imported
+  when: i_import
+
+- name: INCLUDE CHECK
+  ansible.builtin.debug:
+    msg: I have been included
+  when: i_include
