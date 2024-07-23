@@ -1,0 +1,17 @@
+---
+- name: test import
+  hosts: all
+  vars:
+    i_include: false
+    i_import: true
+
+  tasks: 
+    - import_tasks: debug.yml
+      when: i_import
+      vars:
+        count: 3
+
+    - import_tasks: debug.yml
+      when: i_include
+      vars:
+        count: 4
