@@ -1,17 +1,23 @@
 ---
-- name: test includes 
+- name: "Section 1: test dynamic includes"
   hosts: all
   vars:
     i_include: true
     i_import: false
 
   tasks:
-    - include_tasks: debug.yml
+    - ansible.builtin.debug: msg="You will see include_tasks below and no imports until Section 2"
+
+    - include_tasks: tasks.yml
       when: i_include
       vars:
         count: 1
 
-    - include_tasks: debug.yml
-      when: i_import
+    - ansible.builtin.debug: msg="Next include will be skipped because of the false condition:"
+
+    - include_tasks: tasks.yml
+      when: not i_include
       vars:
         count: 2
+
+    - ansible.builtin.debug: msg="Ansible skipped the whole include and not individual tasks"

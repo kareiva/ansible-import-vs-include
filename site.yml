@@ -1,6 +1,8 @@
 ---
-- name: 1. Test the includes
+- name: 1. This playbook uses dynamic includes.
+  gather_facts: no
   import_playbook: include.yml
 
-- name: 2. Test the imports
+- name: 2. This playbook uses static imports.
+  gather_facts: no
   import_playbook: import.yml

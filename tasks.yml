@@ -1,6 +1,6 @@
 - name: DEBUG MESSAGE
   ansible.builtin.debug:
-    msg: this is debug {{ count }}
+    msg: this is number {{ count }} when the task file has been imported/included
 
 - name: IMPORT CHECK
   ansible.builtin.debug:

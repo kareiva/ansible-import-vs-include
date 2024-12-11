@@ -1,17 +1,24 @@
 ---
-- name: test import
+- name: "Section 2: test static imports"
   hosts: all
   vars:
     i_include: false
     i_import: true
 
   tasks: 
-    - import_tasks: debug.yml
+
+    - ansible.builtin.debug: msg="Now with import, you will see all the tasks executed directly from the task file"
+
+    - import_tasks: tasks.yml
       when: i_import
       vars:
         count: 3
 
-    - import_tasks: debug.yml
-      when: i_include
+    - ansible.builtin.debug: msg="All tasks from the imported file will now be skipped because of the condition"
+
+    - import_tasks: tasks.yml
+      when: not i_import
       vars:
         count: 4
+
+    - ansible.builtin.debug: msg="You saw no import tasks because they are not executed as tasks"
